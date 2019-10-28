@@ -2,7 +2,7 @@ package driver
 
 import (
 	"database/sql"
-	"github.com/ajrmzcs/books/driver"
+	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"os"
 )
@@ -15,7 +15,7 @@ func logFatal(err error) {
 
 func ConnectDB() *sql.DB {
 	db, err := sql.Open("mysql",
-		os.Getenv("DB_USER")+":"+os.Getenv("DB_USER")+"@/"+os.Getenv("DB_NAME"))
+		os.Getenv("DB_USER")+":"+os.Getenv("DB_PASSWORD")+"@/"+os.Getenv("DB_NAME"))
 
 	logFatal(err)
 
